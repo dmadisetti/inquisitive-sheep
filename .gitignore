@@ -1,0 +1,6 @@
+static/packages/
+*.js
+*.deps
+*.map
+*.lock
+go_appengine*

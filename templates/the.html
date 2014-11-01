@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Meow </title>
+        <link rel="stylesheet" type="text/css" href="/static/the.css"/>
+    </head>
+    <body>
+    <table>
+        <tr>
+            <td>Start</td>
+            <td><b>{{.Start}}</b></td>
+        </tr>
+        <tr>
+            <td>Error</td>
+            <td><b>{{.Error}}</b></td>
+        </tr>
+        <tr>
+            <td>Long</td>
+            <td><b>{{.Long}}</b></td>
+        </tr>
+        <tr>
+            <td>Lat</td>
+            <td><b>{{.Lat}}</b></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><b>{{.Name}}</b></td>
+        </tr>
+        <tr>
+            <td>Fatal</td>
+            <td><b>{{.Fatal}}</b></td>
+        </tr>
+        <tr>
+            <td>Over</td>
+            <td><b>{{.Over}}</b></td>
+        </tr>
+    </table>
+    <iframe width="800" height="600" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q={{.Lat}},{{.Long}}&hl=es;z=14&amp;output=embed"></iframe>
+    <div>
+        <a href="/instance.csv">
+            Instance
+        </a>
+        <a href="/message.csv">
+            Message
+        </a>
+        <a href="/flush">
+            Flush
+        </a>
+    </div>
+    </body>
+</html>

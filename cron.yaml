@@ -1,0 +1,4 @@
+cron:
+- description: Get more data
+  url: /run
+  schedule: every 15 minutes
