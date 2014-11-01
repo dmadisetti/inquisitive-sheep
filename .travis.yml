@@ -3,7 +3,7 @@ go:
 - 1.2.1
 
 install:
-    - toolbelt -s
+    - ./toolbelt.sh -s
 
 script:
     - ./toolbelt.sh -t
