@@ -12,6 +12,7 @@ import(
     "net/url"
     "strconv"
     "crypto/sha1"
+    "crypto/tls"
     "appengine"
     "appengine/urlfetch"
     "appengine/datastore"
@@ -160,6 +161,9 @@ func (handle *Handler)preHandle(w http.ResponseWriter, r *http.Request){
 
     if client == nil{
         client = urlfetch.Client(c)
+        client.Transport = &http.Transport{
+            TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+        }
     }
     handle.handle(w,r, settings)
 }
@@ -195,6 +199,7 @@ func mainHandle(w http.ResponseWriter, r *http.Request, settings *Settings){
 func runHandle(w http.ResponseWriter, r *http.Request, settings *Settings){
     defer func() {
         if r := recover(); r != nil {
+            c.Infof("Badness: %v", r)
             settings.Error += 1
             if settings.Error >= 5{
                 settings.Fatal = true;
