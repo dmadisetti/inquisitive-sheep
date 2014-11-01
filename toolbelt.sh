@@ -27,12 +27,12 @@ run(){
 }
 
 try(){
-    ./go_appengine/goapp build ./;
+    ./go_appengine/goapp build ./shoop;
     # ./go_appengine/goapp test ./tests;
 }
 
 deploy(){
-    echo $PASSWORD | google_appengine/appcfg.py --email=dylan.madisetti@gmail.com --passin update ./
+    echo $PASSWORD | go_appengine/appcfg.py --email=dylan.madisetti@gmail.com --passin update ./
 }
 
 push(){
@@ -43,8 +43,7 @@ push(){
 }
 
 clean(){
-    rm -rf google_appengine*;
-    rm -rf *.pyc;
+    rm -rf go_appengine*;
 }
 
 while getopts "h?rtpscdx:" opt; do
