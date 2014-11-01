@@ -1,12 +1,12 @@
 language: go
 go:
 - 1.2.1
-
 install:
-    - ./toolbelt.sh -s
-
+- ./toolbelt.sh -s
 script:
-    - ./toolbelt.sh -t
-
+- ./toolbelt.sh -t
 after_success:
-    - ./toolbelt.sh -d
+- ./toolbelt.sh -d
+env:
+  global:
+    secure: nBMDzNZZ73ignc8xZrQqZpPrabtZm3a1XhrCINa/KtM7rpgYgxQTlLOoXPPu1jF6S85xbIWXta1iig3iYu2Ts4o3wLz+94NfgUqgbpo/df7Ucm7qvYk0UYy3kJR/x3KUskKF2UfDdo86XFzHnYfVSD4w18vS/uo50HnTMT6kNs0=
