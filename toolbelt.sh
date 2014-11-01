@@ -27,8 +27,8 @@ run(){
 }
 
 try(){
-    ./go_appengine/goapp test ./build;
-    ./go_appengine/goapp test ./tests;
+    ./go_appengine/goapp build ./;
+    # ./go_appengine/goapp test ./tests;
 }
 
 deploy(){
