@@ -32,12 +32,6 @@ var get = url.URL{
     Host:"forgot-to-close-my-api.net",
     Path:"/api/getMessages",
 }
-var params = url.Values{
-    "lat":{"33.9800272"},
-    "long":{"-80.9842865"},
-    "userID":{"ddc6728f-bd0d-11e3-ab67-0401130aa601"},
-    "version":{"2.1.003"},
-}
 
 type Settings struct {
     Start time.Time
@@ -199,7 +193,7 @@ func mainHandle(w http.ResponseWriter, r *http.Request, settings *Settings){
 func runHandle(w http.ResponseWriter, r *http.Request, settings *Settings){
     defer func() {
         if r := recover(); r != nil {
-            c.Infof("Badness: %v", r)
+            c.Warningf("Badness: %v", r)
             settings.Error += 1
             if settings.Error >= 5{
                 settings.Fatal = true;
@@ -220,8 +214,12 @@ func runHandle(w http.ResponseWriter, r *http.Request, settings *Settings){
         fmt.Fprint(w,  Response{"Woops":"Over"})
         return
     }
-    params.Set("long",settings.Long)
-    params.Set("lat",settings.Lat)
+    params := url.Values{
+        "lat":{settings.Lat},
+        "long":{settings.Long},
+        "userID":{"ddc6728f-bd0d-11e3-ab67-0401130aa601"},
+        "version":{"2.1.003"},
+    }
     get.Host = settings.Host
     now := time.Now()
     t := strconv.FormatInt(now.Unix(),10)
@@ -238,7 +236,7 @@ func runHandle(w http.ResponseWriter, r *http.Request, settings *Settings){
     request.Header.Set("Accept-Encoding", acceptEncoding)
     response,err := client.Do(request)
     if err != nil {
-        panic(err)        
+        panic(request.Header)        
         return
     }
     //Decode request
