@@ -28,7 +28,7 @@ run(){
 
 try(){
     ./go_appengine/goapp build ./shoop;
-    # ./go_appengine/goapp test ./tests;
+    ./go_appengine/goapp test ./tests;
 }
 
 deploy(){
