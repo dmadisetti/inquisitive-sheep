@@ -3,7 +3,9 @@ Inquisitive Sheep - Someone left their API open. Uhoh
 
 [![Build Status](https://travis-ci.org/dmadisetti/inquisitive-sheep.png)](https://travis-ci.org/dmadisetti/inquisitive-sheep)
 
-Put together over the night. Starting to like go, but still athe point where the API is my best friend. Data collection for app api. Not including app incase I get sued. Benign script, but still. Might be able to guess what service if you checkout the structs for json.
+Put together over the night. Starting to like Go, but still at the point where the API is my best friend. 
+
+Data collection for mobile app api. Not discussing which app incase I get sued (benign script, but still). You might be able to guess what service if you checkout the structs for json. Cool exercise in packet sniffing and investigation
 
 ---
 Manage settings from the GAE datastore viewer
@@ -20,7 +22,10 @@ Manage settings from the GAE datastore viewer
 ```
 
 ---
+Inteferface for status and downloading aggregate data after run
+![alt tag](https://raw.github.com/dmadisetti/inquisitive-sheep/master/screenshot.jpg "Screenshot")
 
+---
 Objectives:
 
 - More Go - `Check`
