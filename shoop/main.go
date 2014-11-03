@@ -152,6 +152,7 @@ func instanceHandle(w http.ResponseWriter, r *http.Request, session Session){
     if err != nil  || len(keys) == 0{
         w.Header().Set("Content-Type", "application/json")
         fmt.Fprint(w, Response{"Woops":"No data"})
+        session.Context.Warningf("Datasotre fail: %v", err)
         return
     }
     WriteCSV(w,reflect.TypeOf(Instance{}),reflect.ValueOf(tables),session)
@@ -165,6 +166,7 @@ func messageHandle(w http.ResponseWriter, r *http.Request, session Session){
     if err != nil  || len(keys) == 0{
         w.Header().Set("Content-Type", "application/json")
         fmt.Fprint(w, Response{"Woops":"No data"})
+        session.Context.Warningf("Datasotre fail: %v", err)
         return
     }
     WriteCSV(w,reflect.TypeOf(Message{}),reflect.ValueOf(tables),session)
