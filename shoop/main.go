@@ -4,7 +4,6 @@ import (
     "net/http"
     "fmt"
     "time"
-    "reflect"
     "encoding/json"
     "html/template"
     "net/url"
@@ -142,32 +141,12 @@ func flushHandle(w http.ResponseWriter, r *http.Request, session Session){
 }
 
 // CSV handlers. 
-// Redundant, but reflection gets weird 
-// without an initial concrete value
-// Write out instances to csv
+// Reflection gets weird 
 func instanceHandle(w http.ResponseWriter, r *http.Request, session Session){
-    var tables []Instance
-    // Look it all up
-    keys,err := datastore.NewQuery("Instance").GetAll(session.Context,&tables)
-    if err != nil  || len(keys) == 0{
-        w.Header().Set("Content-Type", "application/json")
-        fmt.Fprint(w, Response{"Woops":"No data"})
-        session.Context.Warningf("Datasotre fail: %v", err)
-        return
-    }
-    WriteCSV(w,reflect.TypeOf(Instance{}),reflect.ValueOf(tables),session)
+    WriteCSV(w,"Instance",session)
 }
 
 // Write out messages to csv
 func messageHandle(w http.ResponseWriter, r *http.Request, session Session){
-    var tables []Message
-    // Look it all up
-    keys,err := datastore.NewQuery("Message").GetAll(session.Context,&tables)
-    if err != nil  || len(keys) == 0{
-        w.Header().Set("Content-Type", "application/json")
-        fmt.Fprint(w, Response{"Woops":"No data"})
-        session.Context.Warningf("Datasotre fail: %v", err)
-        return
-    }
-    WriteCSV(w,reflect.TypeOf(Message{}),reflect.ValueOf(tables),session)
+    WriteCSV(w,"Message",session)
 }
