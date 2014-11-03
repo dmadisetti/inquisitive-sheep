@@ -4,3 +4,4 @@ static/packages/
 *.map
 *.lock
 go_appengine*
+bulkloader*

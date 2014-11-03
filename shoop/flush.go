@@ -9,6 +9,7 @@ func Delete(table string, session Session) bool{
     if err == nil {
         err := datastore.DeleteMulti(session.Context, keys)
         if err != nil{
+            session.Context.Warningf("Badness: %v", err)
             return false
         }
     }else {
