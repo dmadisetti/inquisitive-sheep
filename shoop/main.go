@@ -12,6 +12,7 @@ import (
     "appengine/datastore"
     "appengine/memcache"
     "encoding/base64"
+    _ "appengine/remote_api"
 )
 
 // Headers stuffs
