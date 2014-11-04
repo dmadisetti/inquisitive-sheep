@@ -5,3 +5,4 @@ static/packages/
 *.lock
 go_appengine*
 bulkloader*
+backups

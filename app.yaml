@@ -21,3 +21,5 @@ skip_files:
 - \..*
 - README.md
 - toolbelt.sh
+- backups
+- bulkloader*

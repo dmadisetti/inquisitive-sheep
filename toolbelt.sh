@@ -43,11 +43,11 @@ deploy(){
 }
 
 backup(){
-    go_appengine/appcfg.py download_data --application=$APP_ID --url=http://$APP_ID.appspot.com/remote_api --filename=backups/$filename --email=$EMAIL;
+    go_appengine/appcfg.py download_data --application=$APP_ID --url=http://$APP_ID.appspot.com/_ah/remote_api --filename=backups/$filename --email=$EMAIL;
 }
 
 init(){
-    appcfg.py upload_data --application=$APP_ID --filename=backups/$filename --url=http://localhost:8080/remote_api --email=$EMAIL;
+    appcfg.py upload_data --application=$APP_ID --filename=backups/$filename --url=http://localhost:8080/_ah/remote_api --email=$EMAIL;
 }
 
 push(){
